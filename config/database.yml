@@ -1,0 +1,17 @@
+general: &general
+  adapter: postgresql
+  pool: 5
+  host: localhost
+  min_messages: WARNING
+
+development:
+  <<: *general
+  database: kanban_survey_dev
+
+test:
+  <<: *general
+  database: kanban_survey_test
+
+production:
+  <<: *general
+  database: kanban_survey
