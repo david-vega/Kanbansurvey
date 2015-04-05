@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20150405000758) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  # enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
     t.integer  "question_id"
@@ -39,9 +39,12 @@ ActiveRecord::Schema.define(version: 20150405000758) do
 
   create_table "surveys", force: :cascade do |t|
     t.integer  "user_id"
+    t.string   "external_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "surveys", ["external_id"], name: "index_surveys_on_external_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
