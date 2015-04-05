@@ -1,0 +1,2 @@
+class SubQuestion < Question
+end
