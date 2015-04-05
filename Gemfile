@@ -4,6 +4,7 @@ ruby '2.1.5'
 gem 'rails', '4.2.0'
 
 gem 'aasm'
+gem 'awesome_nested_set'
 gem 'backbone-on-rails'
 gem 'bootstrap-sass'
 gem 'coffee-rails'

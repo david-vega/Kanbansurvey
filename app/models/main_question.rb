@@ -1,0 +1,2 @@
+class MainQuestion < Question
+end

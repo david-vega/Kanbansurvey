@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20150405000758) do
 
   # These are extensions that must be enabled in order to support this database
-  # enable_extension "plpgsql"
+  enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
     t.integer  "question_id"
@@ -27,8 +27,11 @@ ActiveRecord::Schema.define(version: 20150405000758) do
   create_table "questions", force: :cascade do |t|
     t.string   "content"
     t.string   "category"
+    t.string   "type"
     t.integer  "level"
-    t.integer  "question_id"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -45,6 +45,8 @@ GEM
     autoprefixer-rails (5.1.7.1)
       execjs
       json
+    awesome_nested_set (3.0.2)
+      activerecord (>= 4.0.0, < 5)
     awesome_print (1.6.1)
     backbone-on-rails (1.1.2.0)
       actionmailer
@@ -270,6 +272,7 @@ PLATFORMS
 
 DEPENDENCIES
   aasm
+  awesome_nested_set
   awesome_print
   backbone-on-rails
   bootstrap-sass
