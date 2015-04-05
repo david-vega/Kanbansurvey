@@ -1,2 +1,0 @@
-class MainQuestion < Question
-end

@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 20150405000758) do
   create_table "questions", force: :cascade do |t|
     t.string   "content"
     t.string   "category"
-    t.string   "type"
-    t.integer  "level"
+    t.integer  "rank"
+    t.integer  "depth"
     t.integer  "parent_id"
     t.integer  "lft"
     t.integer  "rgt"

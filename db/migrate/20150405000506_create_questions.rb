@@ -3,8 +3,8 @@ class CreateQuestions < ActiveRecord::Migration
     create_table :questions do |t|
       t.string :content
       t.string :category
-      t.string :type
-      t.integer :level
+      t.integer :rank
+      t.integer :depth
       t.integer :parent_id
       t.integer :lft
       t.integer :rgt
