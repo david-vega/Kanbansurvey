@@ -3,7 +3,8 @@ class CreateAnswers < ActiveRecord::Migration
     create_table :answers do |t|
       t.integer :question_id
       t.integer :survey_id
-      t.string :response
+      t.boolean :response
+      t.text :comment
 
       t.timestamps
     end

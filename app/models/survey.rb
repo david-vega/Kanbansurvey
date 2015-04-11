@@ -1,5 +1,7 @@
 class Survey < ActiveRecord::Base
   belongs_to :user
+  has_many :answers
+  has_one :contact
 
   before_create :add_external_id
 
