@@ -4,6 +4,6 @@ FactoryGirl.define do
     response { [true, false].sample }
 
     association :question
-    association :survey
+    association :surveys
   end
 end
