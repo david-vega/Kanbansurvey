@@ -5,4 +5,10 @@ class SurveysController < ApplicationController
     # 2.- open url accesible by anyone using something merchant unique (merchant_name, uid, etc.)
     @questions = User.last.questions.roots
   end
+
+  def create
+    survey = Survey.create({ user_id: User.last.id })
+
+    survey.add_answers params[:answers]
+  end
 end

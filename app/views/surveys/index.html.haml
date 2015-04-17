@@ -1,9 +1,11 @@
-= form_tag 'survey', class: 'form', id: 'survey-form' do
+= form_tag 'surveys', class: 'form', id: 'survey-form' do
   %ul
     - @questions.each do |question|
       %li
         = question.content
         = label_tag(:response_yes, 'yes')
-        = radio_button_tag("response_#{question.id}", 'yes')
+        = radio_button_tag("answers[#{question.id}]", 'yes')
         = label_tag(:response_no, 'no')
-        = radio_button_tag("response_#{question.id}", 'no')
+        = radio_button_tag("answers[#{question.id}]", 'no')
+
+  = submit_tag 'Submit', id: 'survey-button', class: 'form-button'

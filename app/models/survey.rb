@@ -5,6 +5,14 @@ class Survey < ActiveRecord::Base
 
   before_create :add_external_id
 
+  def add_answers answers
+    answers.each do |key, value|
+      Answer.create({ response: value,
+                      question_id: key,
+                      survey_id: self.id })
+    end
+  end
+
   private
 
   def add_external_id
