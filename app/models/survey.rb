@@ -6,11 +6,14 @@ class Survey < ActiveRecord::Base
   before_create :add_external_id
 
   def add_answers answers
+    ans = []
+
     answers.each do |key, value|
-      Answer.create({ response: value,
-                      question_id: key,
-                      survey_id: self.id })
+      ans << Answer.create({ response: value,
+                           question_id: key,
+                           survey_id: self.id })
     end
+    ans
   end
 
   private
