@@ -2,6 +2,7 @@ class Survey < ActiveRecord::Base
   belongs_to :user
   has_many :answers
   has_one :contact
+  validates :user_id, :external_id, presence: true
 
   before_create :add_external_id
 
