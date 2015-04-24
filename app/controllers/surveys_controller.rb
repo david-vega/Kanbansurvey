@@ -6,7 +6,13 @@ class SurveysController < ApplicationController
     #Need to check how the customer will enter the page
     # 1.- the merchant is already log in and let the user use an ipad ipad or something
     # 2.- open url accesible by anyone using something merchant unique (merchant_name, uid, etc.)
-    @questions = @user.questions.roots
+
+    if session[:survey_id] && session[:questions_id_array]
+      survey = Survey.find_by id: session[:survey_id]
+      render render_page(session[:questions_id_array])
+    else
+      @questions = @user.questions.roots 
+    end
   end
 
   def create
@@ -14,7 +20,7 @@ class SurveysController < ApplicationController
 
     answers = @survey.add_answers params[:answers]
     question_id_array = answers.map{ |answer| answer.question_id if !answer.response && !answer.question.leaf? }.compact
-
+    session[:questions_id_array] = question_id_array
     render render_page(question_id_array)
   end
 
