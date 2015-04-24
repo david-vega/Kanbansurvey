@@ -4,4 +4,6 @@ class Question < ActiveRecord::Base
   #TODO add external_id to questions
   belongs_to :user
   has_many :answers
+
+  validates :content, :category, :rank, presence: true
 end
