@@ -31,6 +31,7 @@ class SurveysController < ApplicationController
 
   def render_page question_id_array
     if question_id_array.empty?
+      @survey.set_final_score
       'success'
     else
       @questions = question_id_array.map{|id| Question.find_by_id(id).children }.flatten
