@@ -6,6 +6,8 @@ class Survey < ActiveRecord::Base
 
   before_create :add_external_id, :max_total_score
 
+  MULTIPLIER = 1.0
+
   def add_answers answers
     ans = []
 
@@ -35,6 +37,6 @@ class Survey < ActiveRecord::Base
   end
 
   def question_score rank, depth
-    rank/(depth + 1.0)
+    rank/((depth + 1.0) * MULTIPLIER)
   end
 end
