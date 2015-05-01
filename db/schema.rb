@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20150428065706) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  # enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
     t.integer  "question_id"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20150428065706) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "total_score"
+    t.string   "state"
   end
 
   add_index "surveys", ["external_id"], name: "index_surveys_on_external_id", using: :btree
