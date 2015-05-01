@@ -21,7 +21,7 @@ class Survey < ActiveRecord::Base
 
   def set_final_score
     negative_score = self.answers.where(response: false).map{ |a| question_score(a.question.rank, a.question.depth) }.sum
-    self.total_score = self.total_score - negative_score
+    self.total_score = (self.total_score - negative_score)/self.total_score
     self.save
   end
 
@@ -34,6 +34,7 @@ class Survey < ActiveRecord::Base
   def max_total_score
     questions = Question.where(user_id: user_id)
     self.total_score = questions.map{|q| question_score(q.rank, q.depth)}.sum
+    self.save!
   end
 
   def question_score rank, depth
