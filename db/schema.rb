@@ -11,16 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150428065706) do
+ActiveRecord::Schema.define(version: 20150501034425) do
 
   # These are extensions that must be enabled in order to support this database
-  # enable_extension "plpgsql"
+  enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
     t.integer  "question_id"
     t.integer  "survey_id"
     t.boolean  "response"
-    t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -54,6 +53,7 @@ ActiveRecord::Schema.define(version: 20150428065706) do
     t.datetime "updated_at"
     t.float    "total_score"
     t.string   "state"
+    t.string   "comment"
   end
 
   add_index "surveys", ["external_id"], name: "index_surveys_on_external_id", using: :btree

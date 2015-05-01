@@ -12,10 +12,11 @@ class SurveysController < ApplicationController
 
   def create
     create_survey unless @survey
-
     answers = @survey.add_answers params[:answers]
-
     render render_page(question_id_array(answers))
+  end
+
+  def submit
   end
 
   private
@@ -32,7 +33,7 @@ class SurveysController < ApplicationController
   def render_page question_id_array
     if question_id_array.empty?
       @survey.set_final_score
-      'success'
+      'final_information'
     else
       @questions = question_id_array.map{|id| Question.find_by_id(id).children }.flatten
       'index'

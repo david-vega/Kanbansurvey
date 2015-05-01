@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  get ':user_name/surveys', to: 'surveys#index'
-  post ':user_name/surveys', to: 'surveys#create'
+  get ':user_name/survey', to: 'surveys#index'
+  post ':user_name/survey', to: 'surveys#create'
 
-  root 'surveys#index'
+  root 'survey#index'
 end

@@ -1,0 +1,18 @@
+= form_tag 'surveys', class: 'form', id: 'survey-form' do
+	= label_tag :comment 
+	= text_field_tag :comment 
+	%br
+
+	= label_tag :name 
+	= text_field_tag :name
+	%br
+
+	= label_tag :email 
+	= text_field_tag :email 
+	%br
+
+	= label_tag :phone 
+	= text_field_tag :phone 
+	%br
+
+	= submit_tag 'Submit', id: 'survey-button', class: 'form-button'

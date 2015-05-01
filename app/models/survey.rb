@@ -34,7 +34,8 @@ class Survey < ActiveRecord::Base
   def max_total_score
     questions = Question.where(user_id: user_id)
     self.total_score = questions.map{|q| question_score(q.rank, q.depth)}.sum
-    self.save!
+    # binding.pry
+    # self.save!
   end
 
   def question_score rank, depth
