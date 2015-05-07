@@ -13,6 +13,7 @@ class SurveysController < ApplicationController
   def create
     create_survey unless @survey
     answers = @survey.add_answers params[:answers]
+    @survey.in_progress! unless @survey.in_progress?
     render render_page(question_id_array(answers))
   end
 
@@ -31,8 +32,7 @@ class SurveysController < ApplicationController
   end  
 
   def render_page question_id_array
-    if question_id_array.empty?
-      @survey.set_final_score
+    if @survey.finalized?
       'final_information'
     else
       @questions = question_id_array.map{|id| Question.find_by_id(id).children }.flatten
@@ -47,7 +47,7 @@ class SurveysController < ApplicationController
   def question_id_array answers
     question_id_array = answers.map{ |answer| answer.question_id if !answer.response && !answer.question.leaf? }.compact
     session[:questions_id_array] = question_id_array
-
+    @survey.finalize! if question_id_array.empty? 
     question_id_array
   end
 end

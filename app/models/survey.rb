@@ -1,4 +1,5 @@
 class Survey < ActiveRecord::Base
+  include AASM
   belongs_to :user
   has_many :answers
   has_one :contact
@@ -7,6 +8,21 @@ class Survey < ActiveRecord::Base
   before_create :add_external_id, :max_total_score
 
   MULTIPLIER = 1.0
+
+  aasm column: :state do
+    state :initialized, :initial => true
+    state :in_progress
+    state :finalized
+
+    event :in_progress do
+      transitions from: :initialized, to: :in_progress
+    end
+
+    event :finalize do
+      transitions from: :in_progress, to: :finalized,
+      on_transition: :set_final_score
+    end
+  end
 
   def add_answers answers
     ans = []
@@ -33,9 +49,7 @@ class Survey < ActiveRecord::Base
 
   def max_total_score
     questions = Question.where(user_id: user_id)
-    self.total_score = questions.map{|q| question_score(q.rank, q.depth)}.sum
-    # binding.pry
-    # self.save!
+    self.total_score = questions.map{|q| question_score(q.rank, q.depth)}.sum  #{ max: 74, final: 58 }
   end
 
   def question_score rank, depth
