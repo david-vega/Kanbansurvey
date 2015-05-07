@@ -25,6 +25,7 @@ class Survey < ActiveRecord::Base
   end
 
   def add_answers answers
+    self.in_progress! unless self.in_progress?
     ans = []
 
     answers.each do |key, value|

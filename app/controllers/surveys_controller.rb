@@ -3,18 +3,15 @@ class SurveysController < ApplicationController
   before_filter :find_user, only: [:index, :create]
 
   def index
-    if @survey && session[:questions_id_array]
-      render render_page(session[:questions_id_array])
-    else
-      @questions = @user.questions.roots 
-    end
+    render render_page
   end
 
   def create
     create_survey unless @survey
     answers = @survey.add_answers params[:answers]
-    @survey.in_progress! unless @survey.in_progress?
-    render render_page(question_id_array(answers))
+    session[:questions_id_array] = question_id_array(answers)
+
+    render render_page
   end
 
   def submit
@@ -26,28 +23,40 @@ class SurveysController < ApplicationController
     @survey = Survey.find_by id: session[:survey_id]
   end
 
+  def find_user
+    @user = User.find_by name: params[:user_name]
+  end
+
   def create_survey
     @survey = Survey.create({ user_id: @user.id })
     session[:survey_id] = @survey.id
   end  
 
-  def render_page question_id_array
-    if @survey.finalized?
+  def render_page
+    #TODO move this to a presenter
+    if @survey && @survey.finalized?
       'final_information'
     else
-      @questions = question_id_array.map{|id| Question.find_by_id(id).children }.flatten
+       get_questions
       'index'
     end
   end
 
-  def find_user
-    @user = User.find_by name: params[:user_name]
+  def get_questions
+    #TODO  move this to a presenter
+    @questions =
+      if @survey && session[:questions_id_array].any?
+        session[:questions_id_array].map{|id| @user.questions.find_by_id(id).children }.flatten
+      else
+        @user.questions.roots
+      end
   end
 
   def question_id_array answers
+    #TODO  move this to a presenter
     question_id_array = answers.map{ |answer| answer.question_id if !answer.response && !answer.question.leaf? }.compact
-    session[:questions_id_array] = question_id_array
-    @survey.finalize! if question_id_array.empty? 
+    @survey.finalize! if question_id_array.empty?
+
     question_id_array
   end
 end
