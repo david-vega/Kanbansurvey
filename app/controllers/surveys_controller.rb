@@ -9,8 +9,12 @@ class SurveysController < ApplicationController
   def create
     create_survey unless @survey
     answers = @survey.add_answers params[:answers]
+    if session[:questions_id_array]
+      @survey.update_survey_with_partial_score answers, session[:questions_id_array]
+    else
+      @survey.update_survey_with_partial_score answers, nil
+    end
     session[:questions_id_array] = question_id_array(answers)
-
     render render_page
   end
 
@@ -58,5 +62,9 @@ class SurveysController < ApplicationController
     @survey.finalize! if question_id_array.empty?
 
     question_id_array
+  end
+
+  def update_survey_with_partial_score
+
   end
 end
