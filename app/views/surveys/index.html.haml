@@ -4,8 +4,8 @@
       %li
         = question.content
         = label_tag(:response_yes, 'yes')
-        = radio_button_tag("answers[#{question.id}]", true)
+        = radio_button_tag("answers[#{question.id}]", true )
         = label_tag(:response_no, 'no')
-        = radio_button_tag("answers[#{question.id}]", false)
+        = radio_button_tag("answers[#{question.id}]", false )
 
   = submit_tag 'Submit', id: 'survey-button', class: 'form-button'
