@@ -1,6 +1,7 @@
 class SurveysController < ApplicationController
 
   before_filter :find_user, only: [:index, :create]
+  before_filter :find_survey
 
   def index
     render render_page
@@ -14,7 +15,8 @@ class SurveysController < ApplicationController
     render render_page
   end
 
-  def submit
+  def comment_and_contact_info
+
   end
 
   private
