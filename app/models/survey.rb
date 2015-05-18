@@ -42,6 +42,11 @@ class Survey < ActiveRecord::Base
     self.save
   end
 
+  def add_comment comment
+    self.comment = comment
+    self.save!
+  end
+
   private
 
   def add_external_id

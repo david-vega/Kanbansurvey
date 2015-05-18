@@ -1,6 +1,6 @@
 class SurveysController < ApplicationController
 
-  before_filter :find_user, only: [:index, :create]
+  before_filter :find_user
   before_filter :find_survey
 
   def index
@@ -16,7 +16,10 @@ class SurveysController < ApplicationController
   end
 
   def comment_and_contact_info
+    @survey.add_comment params[:comment] if params[:comment]
+    create_contact if params[:email] || params[:phone] || params[:name]
 
+    render 'success'
   end
 
   private
@@ -60,5 +63,14 @@ class SurveysController < ApplicationController
     @survey.finalize! if question_id_array.empty?
 
     question_id_array
+  end
+
+  def create_contact
+    @contact = Contact.create({
+      survey_id: @survey.id,
+      phone_number: params[:phone_number].presence,
+      email: params[:email].presence,
+      name: params[:name].presence
+    })
   end
 end
