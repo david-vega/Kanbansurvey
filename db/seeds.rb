@@ -10,8 +10,8 @@ reception_children = [
     rank: rand(10)
   },
   {
-    content: '¿Nuestro personal sonrió y supo responder a sus preguntas en general?',
-    rank: rand(10)
+    content: '¿Nuestro personal le sugirio algun platillo y supo responder a sus preguntas en general?',
+    rank: 6
   },
   {
     content: '¿Nuestro personal le ofreció y le entregó la carta de bebidas o alimentos para usted y todos sus acompañantes?',
