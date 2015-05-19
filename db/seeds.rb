@@ -3,7 +3,7 @@ user = User.create({ email: 'zetacu+kanban@gmail.com', name: 'user1', password: 
 reception_children = [
   {
     content: '¿Nuestro personal lo guió ó le dio a elegir la mesa de su elección?',
-    rank: rand(10)
+    rank: 7
   },
   {
     content: '¿La actitud de nuestro personal fue amable y positiva en todo momento?',
