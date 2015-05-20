@@ -1,0 +1,20 @@
+%table
+	%tr
+		%th 
+			%strong External-Id 
+		%th
+			%strong Score
+		%th 
+			%strong Status	
+		%th 
+			%strong Last Update
+	- @survey.each do |survey|
+		%tr
+			%td
+				= link_to survey.external_id, "dashboard/#{survey.external_id}"
+			%td
+				= survey.total_score
+			%td
+				= survey.state
+			%td
+				= survey.updated_at
