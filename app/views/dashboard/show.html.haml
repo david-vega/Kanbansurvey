@@ -1,1 +1,17 @@
-= @survey
+%table
+	%tr
+		%th 
+			%strong Question 
+		%th
+			%strong Answer
+	- @survey.answers.each do |answer|
+		%tr
+			%td
+				= answer.question.content
+			%td
+				= answer.response
+
+= @survey.comment
+
+- if @survey.contact
+	= render 'contact/show'
