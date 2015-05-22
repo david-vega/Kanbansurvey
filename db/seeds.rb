@@ -3,15 +3,15 @@ user = User.create({ email: 'zetacu+kanban@gmail.com', name: 'user1', password: 
 reception_children = [
   {
     content: '¿Nuestro personal lo guió ó le dio a elegir la mesa de su elección?',
-    rank: rand(10)
+    rank: 7
   },
   {
     content: '¿La actitud de nuestro personal fue amable y positiva en todo momento?',
     rank: rand(10)
   },
   {
-    content: '¿Nuestro personal sonrió y supo responder a sus preguntas en general?',
-    rank: rand(10)
+    content: '¿Nuestro personal le sugirio algun platillo y supo responder a sus preguntas en general?',
+    rank: 6
   },
   {
     content: '¿Nuestro personal le ofreció y le entregó la carta de bebidas o alimentos para usted y todos sus acompañantes?',
