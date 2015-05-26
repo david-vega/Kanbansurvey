@@ -188,6 +188,12 @@ questions = [
     category: 'Delivery',
     rank: rand(10),
     children: delivery_children
+  },
+  {
+    content: '¿Que calificación pondría de acuerdo a su experiencia con nosotros?',
+    category: 'Escala',
+    rank: 1 al 10,
+    children: general_children
   }
 ]
 
