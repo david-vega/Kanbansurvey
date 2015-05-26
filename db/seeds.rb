@@ -33,8 +33,8 @@ service_children = [
     rank: rand(10)
   },
   {
-    content: '¿Considera la imagen y la higiene del personal la adecuada?',
-    rank: rand(10)
+    content: '¿Considera la imagen y la higiene del personal la adecuada y acorde al lugar?',
+    rank: 5
   },
   {
     content: '¿Considera que la persona que le atendió esta capacitada para su puesto?',
