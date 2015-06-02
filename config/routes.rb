@@ -7,11 +7,11 @@ Rails.application.routes.draw do
     delete '/logout', to: 'devise/sessions#destroy'
   end
 
-  get ':user_name/survey', to: 'surveys#index'
-  post ':user_name/survey', to: 'surveys#create'
+  get ':user_name/', to: 'surveys#index'
+  post ':user_name/', to: 'surveys#create'
   post ':user_name/comment', to: 'surveys#comment_and_contact_info'
 
   resources :dashboard, only: [:index, :show]
 
-  root 'survey#index'
+  root 'devise/registrations#new'
 end
