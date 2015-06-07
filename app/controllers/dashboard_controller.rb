@@ -15,5 +15,4 @@ class DashboardController < ApplicationController
 	def find_survey
 		@survey = current_user.surveys.find_by external_id: params[:id]
 	end
-
 end

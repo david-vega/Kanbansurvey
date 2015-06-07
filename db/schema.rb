@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20150522030232) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  # enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
     t.integer  "question_id"
@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 20150522030232) do
     t.boolean  "response"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.float    "score"
   end
 
   create_table "contacts", force: :cascade do |t|
