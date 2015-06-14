@@ -6,18 +6,23 @@ class User < ActiveRecord::Base
 
   has_many :surveys
   has_many :questions
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z0-9][a-zA-Z0-9_]*\z/, message: 'Invalid user name' }
 
-  cattr_accessor :question_type
+  # cattr_accessor :question_type
+  # validates :question_type, presence: true
 
   after_create :assign_questions
 
   private
 
   def assign_questions
-    questions = case question_type
-                when 'restaurant' then restaurant_questions
-                end
+
+    #TODO activate question_type
+    # questions = case question_type
+    #             when 'restaurant' then restaurant_questions
+    #             end
+
+    questions = restaurant_questions
 
     rank = 5 #TODO see if this number actually works well with the score
     questions.each do |question|
