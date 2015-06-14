@@ -1,5 +1,5 @@
 User total score:
-= (@survey.map{ |s| s.total_score[:final] if s.finalized? }.sum / @survey.count) * 10
+= (@surveys.map{ |s| s.total_score[:final] if s.finalized? }.sum / @surveys.count) * 10 if @surveys.any?
 
 %table
 	%tr
@@ -11,7 +11,7 @@ User total score:
 			%strong Status	
 		%th 
 			%strong Last Update
-	- @survey.each do |survey|
+	- @surveys.each do |survey|
 		%tr
 			%td
 				= link_to survey.external_id, "dashboard/#{survey.external_id}"
