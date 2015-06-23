@@ -1,19 +1,18 @@
-= form_tag 'comment', class: 'form', id: 'user-form' do
-	
-	= label_tag :comment 
-	= text_field_tag :comment 
-	%br
+= form_tag "#{@user.name}/comment", class: 'form', id: 'user-form' do
+  = label_tag :comment
+  = text_field_tag :comment
+  %br
 
-	= label_tag :name 
-	= text_field_tag :name
-	%br
+  = label_tag :name
+  = text_field_tag :name
+  %br
 
-	= label_tag :email 
-	= text_field_tag :email 
-	%br
+  = label_tag :email
+  = text_field_tag :email
+  %br
 
-	= label_tag :phone_number
-	= text_field_tag :phone_number
-	%br
+  = label_tag :phone_number
+  = text_field_tag :phone_number
+  %br
 
-	= submit_tag 'Submit', id: 'comments-and-contact-info', class: 'form-button'
+  = submit_tag 'Submit', id: 'comments-and-contact-info', class: 'form-button'
