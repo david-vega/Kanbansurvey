@@ -21,6 +21,7 @@ gem 'sass'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'versionist'
+gem 'google-webfonts-rails', '~> 0.0.4'
 
 group :test, :development do
   gem 'awesome_print'
