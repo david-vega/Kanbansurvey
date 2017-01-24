@@ -2,16 +2,16 @@ user = User.create({ email: 'zetacu+kanban@gmail.com', name: 'user1', password: 
 
 reception_children = [
   {
-    content: '¿Nuestro personal lo guió ó le dio a elegir la mesa de su elección?',
-    rank: rand(10)
+    content: '¿Por parte de nuestro personal hubo alguna persona que le atendiera o lo llevará a su mesa?',
+    rank: 6
   },
   {
     content: '¿La actitud de nuestro personal fue amable y positiva en todo momento?',
     rank: rand(10)
   },
   {
-    content: '¿Nuestro personal sonrió y supo responder a sus preguntas en general?',
-    rank: rand(10)
+    content: '¿Nuestro personal le sugirio algun platillo y supo responder a sus preguntas en general?',
+    rank: 6
   },
   {
     content: '¿Nuestro personal le ofreció y le entregó la carta de bebidas o alimentos para usted y todos sus acompañantes?',
@@ -33,8 +33,8 @@ service_children = [
     rank: rand(10)
   },
   {
-    content: '¿Considera la imagen y la higiene del personal la adecuada?',
-    rank: rand(10)
+    content: '¿Considera la imagen y la higiene del personal la adecuada y acorde al lugar?',
+    rank: 5
   },
   {
     content: '¿Considera que la persona que le atendió esta capacitada para su puesto?',
@@ -188,6 +188,12 @@ questions = [
     category: 'Delivery',
     rank: rand(10),
     children: delivery_children
+  },
+  {
+    content: '¿Que calificación pondría de acuerdo a su experiencia con nosotros?',
+    category: 'Escala',
+    rank: 1 al 10,
+    children: general_children
   }
 ]
 
